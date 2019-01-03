@@ -1,0 +1,30 @@
+<!-- PARA MODIFICAR EL POPUP DE LOGIN SE DEBE HACER DESDE LA PAGINA DE AUTH0 EN DASHBOARD-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">AuthApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive>
+                <a class="nav-link" [routerLink]="['home']">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['prices']">Prices</a>
+            </li>
+            <li class="nav-item" *ngIf="auth.isAuthenticated()">
+                <a class="nav-link" [routerLink]="['protected']">Protected</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+             <button *ngIf="!auth.isAuthenticated()" (click)="login()"
+                type="button" name="button"
+                class="btn btn-outline-primary btt-sm">
+                Login</button>
+             <button *ngIf="auth.isAuthenticated()" (click)="logout()" 
+                type="button" name="button"
+                class="btn btn-outline-primary btn-sm" >
+                Logout</button>
+         </span>
+    </div>
+</nav>
